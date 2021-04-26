@@ -16,6 +16,11 @@ const ReviewEditor = () => {
     const updateReview = () => {
         service.updateReview(review.id, review)
     }
+
+    const deleteReview = () => {
+        service.deleteReview(review.id)
+    }
+
     return (
         <div>
             <h2>Review Editor {rid}</h2>
@@ -47,12 +52,12 @@ const ReviewEditor = () => {
 
 
 
-            <button>Delete</button>
+            <button onClick={deleteReview}>Delete</button>
             <button onClick={updateReview}>
                 Save
             </button>
             <button>Create</button>
-            <button>Cancel</button>
+            <button onClick={history.back}>Cancel</button>
             {JSON.stringify(review)}
         </div>
     )

@@ -1,11 +1,12 @@
 import service from "./director-service"
 
 const {useEffect, useState} = React
-const {useParams} = ReactRouterDOM
+const {useParams, useHistory} = ReactRouterDOM
 
 const DirectorEditor = () => {
     const [director, setDirector] = useState([])
     const {did} = useParams()
+    const history = useHistory()
     useEffect(() => {
         service.findDirectorById(did)
             .then((director) => {
@@ -14,6 +15,13 @@ const DirectorEditor = () => {
     }, [])
     const updateDirector = () => {
         service.updateDirector(director.id, director)
+            .then(() => history.goBack())
+    }
+
+    const deleteDirector =() => {
+        service.deleteDirector(director.id)
+            .then(console.log("delete here"))
+            .then(() => history.goBack())
     }
     return (
         <div>
@@ -88,13 +96,16 @@ const DirectorEditor = () => {
 
 
 
-            <button>Delete</button>
+            <button onClick={deleteDirector}>Delete</button>
+
 
             <button onClick={updateDirector}>
                 Save
             </button>
             <button>Create</button>
-            <button>Cancel</button>
+            <button onClick={() => {
+                    history.goBack()
+                }}>Cancel</button>
             {JSON.stringify(director)}
         </div>
     )

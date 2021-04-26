@@ -42,7 +42,7 @@ public class ReviewDao {
     }
 
     @DeleteMapping("/api/reviews/{rid}")
-    public void deleteUser(
+    public void deleteReview(
             @PathVariable("rid") Integer id) {
         repository.deleteById(id);
     }

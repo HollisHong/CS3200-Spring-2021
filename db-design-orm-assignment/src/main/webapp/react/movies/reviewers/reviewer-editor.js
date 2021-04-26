@@ -18,6 +18,10 @@ const ReviewerEditor = () => {
         service.updateReviewer(reviewer.id, reviewer)
     }
 
+    const deleteReviewer = () => {
+        service.deleteReviewer(reviewer.id)
+    }
+
 
 
     return (
@@ -86,12 +90,12 @@ const ReviewerEditor = () => {
                 value={reviewer.email} className="form-control"/>
 
 
-            <button>Delete</button>
+            <button onClick={deleteReviewer}>Delete</button>
             <button onClick={updateReviewer}>
                 Save
             </button>
 
-            <button>Cancel</button>
+            <button onClick={history.back}>Cancel</button>
             {JSON.stringify(reviewer)}
         </div>
     )

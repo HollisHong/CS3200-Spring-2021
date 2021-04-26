@@ -56,7 +56,9 @@ public class DirectorDao {
         return repository.save(director);
     }
 
-    public Integer deleteDirector(Integer id) {
-        return null;
+    @DeleteMapping("/api/movies/{did}")
+    public void deleteDirector(
+            @PathVariable("did") Integer id) {
+        repository.deleteById(id);
     }
 }

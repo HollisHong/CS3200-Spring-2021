@@ -16,6 +16,11 @@ const MovieEditor = () => {
     const updateMovie = () => {
         service.updateMovie(movie.id, movie)
     }
+
+    const deleteMovie = () => {
+        service.deleteMovie(movie.id)
+    }
+
     return (
         <div>
             <h2>Movie Editor {mid}</h2>
@@ -47,12 +52,12 @@ const MovieEditor = () => {
 
 
 
-            <button>Delete</button>
+            <button onClick={deleteMovie}>Delete</button>
             <button onClick={updateMovie}>
                 Save
             </button>
             <button>Create</button>
-            <button>Cancel</button>
+            <button onClick={history.back}>Cancel</button>
             {JSON.stringify(movie)}
         </div>
     )

@@ -33,7 +33,7 @@ const createDirector = (director) =>
 
 
 const deleteDirector = (did) =>
-    fetch(`${DIRECTOR_URL}/${mid}`, {
+    fetch(`${DIRECTOR_URL}/${did}`, {
         method: "DELETE"
     })
 

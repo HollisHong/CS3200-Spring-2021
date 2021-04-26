@@ -42,7 +42,7 @@ public class MovieDao {
     }
 
     @DeleteMapping("/api/movies/{mid}")
-    public void deleteUser(
+    public void deleteMovie(
             @PathVariable("mid") Integer id) {
         repository.deleteById(id);
     }
