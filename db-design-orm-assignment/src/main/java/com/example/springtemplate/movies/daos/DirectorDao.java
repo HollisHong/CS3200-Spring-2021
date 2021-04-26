@@ -3,10 +3,7 @@ package com.example.springtemplate.movies.daos;
 import com.example.springtemplate.movies.models.Director;
 import com.example.springtemplate.movies.repositories.DirectorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -41,10 +38,21 @@ public class DirectorDao {
         return repository.save(director);
     }
 
-    public Integer updateDirector(
+
+    @PutMapping("/api/directors/{did}")
+    public Director updateDirector(
             @PathVariable("did") Integer id,
-            Director newDirector) {
-        return null;
+            @RequestBody Director newDirector) {
+        Director director = repository.findById(id).get();
+        director.setFirstName(newDirector.getFirstName());
+        director.setLastName(newDirector.getLastName());
+        director.setUsername(newDirector.getUsername());
+        director.setPassword(newDirector.getPassword());
+        director.setDateOfBirth(newDirector.getDateOfBirth());
+        director.setEmail(newDirector.getEmail());
+        director.setAge(newDirector.getAge());
+        director.setCountry((newDirector.getCountry()));
+        return repository.save(director);
     }
 
     public Integer deleteDirector(Integer id) {

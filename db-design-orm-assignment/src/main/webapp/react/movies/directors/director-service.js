@@ -14,15 +14,17 @@ const findDirectorById = (did) => {
         })
 }
 
-const updateDirectorName = (did, newDirectorName) => {
-    return fetch(`${DIRECTOR_URL}/${did}/name/${newDirectorName}`)
-        .then((response) => {
-            return response.json()
-        })
-}
+const updateDirector = (did, director) =>
+    fetch(`${DIRECTOR_URL}/${did}`, {
+        method: 'PUT',
+        body: JSON.stringify(director),
+        headers: {'content-type': 'application/json'}
+    })
+        .then(response => response.json())
+
 
 export default {
     findAllDirectors,
     findDirectorById,
-    updateDirectorName
+    updateDirector
 }

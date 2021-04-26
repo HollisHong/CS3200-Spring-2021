@@ -12,8 +12,8 @@ const DirectorEditor = () => {
                 setDirector(director)
             })
     }, [])
-    const updateDirectorName = () => {
-        service.updateDirectorName(director.id, director.username)
+    const updateDirector = () => {
+        service.updateDirector(director.id, director)
     }
     return (
         <div>
@@ -24,11 +24,73 @@ const DirectorEditor = () => {
             <input
                 onChange={(e) => {
                     const newValue = e.target.value
-                    setDirector({...Director, username: newValue})
+                    setDirector({...director, username: newValue})
                 }}
                 value={director.username} className="form-control"/>
+
+            <label>FirstName</label>
+            <input
+                onChange={(e) => {
+                    const newValue = e.target.value
+                    setDirector({...director, firstName: newValue})
+                }}
+                value={director.firstName} className="form-control"/>
+
+            <label>LastName</label>
+            <input
+                onChange={(e) => {
+                    const newValue = e.target.value
+                    setDirector({...director, lastName: newValue})
+                }}
+                value={director.lastName} className="form-control"/>
+
+            <label>Age</label>
+            <input
+                onChange={(e) => {
+                    const newValue = e.target.value
+                    setDirector({...director, age: newValue})
+                }}
+                value={director.age} className="form-control"/>
+
+            <label>dateOfBirth</label>
+            <input
+                onChange={(e) => {
+                    const newValue = e.target.value
+                    setDirector({...director, dateOfBirth: newValue})
+                }}
+                value={director.dateOfBirth} className="form-control"/>
+
+            <label>Country</label>
+            <input
+                onChange={(e) => {
+                    const newValue = e.target.value
+                    setDirector({...director, country: newValue})
+                }}
+                value={director.country} className="form-control"/>
+
+
+            <label>Passowrd</label>
+            <input
+                onChange={(e) => {
+                    const newValue = e.target.value
+                    setDirector({...director, password: newValue})
+                }}
+                value={director.pasword} className="form-control"/>
+
+
+            <label>Email</label>
+            <input
+                onChange={(e) => {
+                    const newValue = e.target.value
+                    setDirector({...director, email: newValue})
+                }}
+                value={director.email} className="form-control"/>
+
+
+
             <button>Delete</button>
-            <button onClick={updateDirectorName}>
+
+            <button onClick={updateDirector}>
                 Save
             </button>
             <button>Create</button>
