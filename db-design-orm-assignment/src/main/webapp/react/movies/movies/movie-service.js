@@ -23,7 +23,7 @@ const updateMovie = (mid, movie) =>
         .then(response => response.json())
 
 
-const createMovie = (movie) =>
+const createMovie = (did,movie) =>
     fetch(`${MOVIE_URL}`, {
         method: 'POST',
         body: JSON.stringify(movie),

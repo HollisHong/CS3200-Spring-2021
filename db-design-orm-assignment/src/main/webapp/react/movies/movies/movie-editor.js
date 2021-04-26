@@ -1,11 +1,12 @@
 import service from "./movie-service"
 
 const {useEffect, useState} = React
-const {useParams} = ReactRouterDOM
+const {useParams, useHistory} = ReactRouterDOM
 
 const MovieEditor = () => {
     const [movie, setMovie] = useState([])
     const {mid} = useParams()
+    const history = useHistory()
     useEffect(() => {
         service.findMovieById(mid)
             .then((movie) => {
@@ -15,10 +16,12 @@ const MovieEditor = () => {
     }, [])
     const updateMovie = () => {
         service.updateMovie(movie.id, movie)
+            .then(() => history.goBack())
     }
 
     const deleteMovie = () => {
         service.deleteMovie(movie.id)
+            .then(() => history.goBack())
     }
 
     return (
@@ -49,7 +52,6 @@ const MovieEditor = () => {
                     setMovie({...movie, genre: newValue})
                 }}
                 value={movie.genre} className="form-control"/>
-
 
 
             <button onClick={deleteMovie}>Delete</button>

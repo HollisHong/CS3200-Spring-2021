@@ -10,7 +10,7 @@ const DirectorList = () => {
         service.findAllDirectors()
             .then((directors) => {
                 setDirectors(directors)
-                 console.log(directors)
+                 //console.log(directors)
             })
     }, [])
 
@@ -25,7 +25,7 @@ const DirectorList = () => {
 
     return (
         <div>
-            <h2>Directors</h2>
+            <h2>Director List</h2>
             <ul className="list-group">
                 <li className="list-group-item">
                     <div className="row">

@@ -1,11 +1,12 @@
 import service from "./review-service"
 
 const {useEffect, useState} = React
-const {useParams} = ReactRouterDOM
+const {useParams, useHistory} = ReactRouterDOM
 
 const ReviewEditor = () => {
     const [review, setReview] = useState([])
     const {rid} = useParams()
+    const history = useHistory()
     useEffect(() => {
         service.findReviewById(rid)
             .then((review) => {
@@ -15,10 +16,12 @@ const ReviewEditor = () => {
     }, [])
     const updateReview = () => {
         service.updateReview(review.id, review)
+            .then(() => history.goBack())
     }
 
     const deleteReview = () => {
         service.deleteReview(review.id)
+            .then(() => history.goBack())
     }
 
     return (
@@ -53,11 +56,13 @@ const ReviewEditor = () => {
 
 
             <button onClick={deleteReview}>Delete</button>
+
             <button onClick={updateReview}>
                 Save
             </button>
-            <button>Create</button>
-            <button onClick={history.back}>Cancel</button>
+            <button onClick={() => {
+                history.goBack()
+            }}>Cancel</button>
             {JSON.stringify(review)}
         </div>
     )

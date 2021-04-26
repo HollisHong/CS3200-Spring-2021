@@ -35,7 +35,8 @@ const createReviewer = (reviewer) =>
 
 const deleteReviewer = (rerid) =>
     fetch(`${REVIEWER_URL}/${rerid}`, {
-        method: "DELETE"
+        method: 'DELETE',
+        headers: {'content-type': 'application/json'}
     })
 
 

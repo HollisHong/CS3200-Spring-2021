@@ -19,7 +19,7 @@ public class Reviewer {
     private Date dateOfBirth;
 
 
-    @OneToMany(mappedBy = "reviewer")
+    @OneToMany(mappedBy = "reviewer", orphanRemoval=true)
     private List<Review> reviews;
 
     public Integer getId() {

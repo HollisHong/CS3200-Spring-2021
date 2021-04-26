@@ -1,7 +1,9 @@
 package com.example.springtemplate.movies.daos;
 
 import com.example.springtemplate.movies.models.Director;
+import com.example.springtemplate.movies.models.Movie;
 import com.example.springtemplate.movies.repositories.DirectorRepository;
+import com.example.springtemplate.movies.repositories.MovieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -56,7 +58,7 @@ public class DirectorDao {
         return repository.save(director);
     }
 
-    @DeleteMapping("/api/movies/{did}")
+    @DeleteMapping("/api/directors/{did}")
     public void deleteDirector(
             @PathVariable("did") Integer id) {
         repository.deleteById(id);

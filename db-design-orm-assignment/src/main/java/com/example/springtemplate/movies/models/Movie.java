@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Optional;
 
 @Entity
 @Table(name = "movies")
@@ -19,7 +20,7 @@ public class Movie {
     @JsonIgnore
     private Director director;
 
-    @OneToMany(mappedBy = "movie")
+    @OneToMany(mappedBy = "movie", orphanRemoval=true)
     private List<Review> reviews;
 
     public Integer getId() {
@@ -58,7 +59,7 @@ public class Movie {
         return director;
     }
 
-    public void setDirector(Director director) {
+    public void setDirector(Optional<Director> director) {
         this.director = director;
     }
 

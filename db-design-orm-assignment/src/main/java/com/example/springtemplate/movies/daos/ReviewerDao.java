@@ -15,7 +15,7 @@ public class ReviewerDao {
     ReviewerRepository repository;
 
 
-    @PostMapping("/api/reviewers/new")
+    @PostMapping("/api/reviewers")
     public Reviewer createReviewer(@RequestBody Reviewer reviewer) {
         return repository.save(reviewer);
     }

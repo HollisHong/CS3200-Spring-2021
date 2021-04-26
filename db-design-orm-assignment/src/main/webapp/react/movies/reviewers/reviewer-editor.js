@@ -1,11 +1,12 @@
 import service from "./reviewer-service"
 
 const {useEffect, useState} = React
-const {useParams} = ReactRouterDOM
+const {useParams, useHistory} = ReactRouterDOM
 
 const ReviewerEditor = () => {
     const [reviewer, setReviewer] = useState([])
     const {rerid} = useParams()
+    const history = useHistory()
     useEffect(() => {
         service.findReviewerById(rerid)
             .then((reviewer) => {
@@ -16,10 +17,12 @@ const ReviewerEditor = () => {
 
     const updateReviewer = () => {
         service.updateReviewer(reviewer.id, reviewer)
+            .then(() => history.goBack())
     }
 
     const deleteReviewer = () => {
         service.deleteReviewer(reviewer.id)
+            .then(() => history.goBack())
     }
 
 
@@ -95,7 +98,9 @@ const ReviewerEditor = () => {
                 Save
             </button>
 
-            <button onClick={history.back}>Cancel</button>
+            <button onClick={() => {
+                history.goBack()
+            }}>Cancel</button>
             {JSON.stringify(reviewer)}
         </div>
     )

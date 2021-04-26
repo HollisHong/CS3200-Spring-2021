@@ -2,6 +2,7 @@ package com.example.springtemplate.movies.daos;
 
 import com.example.springtemplate.movies.models.Director;
 import com.example.springtemplate.movies.models.Movie;
+import com.example.springtemplate.movies.repositories.DirectorRepository;
 import com.example.springtemplate.movies.repositories.MovieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,9 +14,13 @@ import java.util.List;
 public class MovieDao {
     @Autowired
     MovieRepository repository;
+    DirectorRepository Drepository;
 
     @PostMapping("/api/movies")
-    public Movie createUser(@RequestBody Movie movie) {
+    public Movie createMovie(
+            @RequestBody Integer id,
+            @RequestBody Movie movie) {
+        movie.setDirector(Drepository.findById(id));
         return repository.save(movie);
     }
 

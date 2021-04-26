@@ -19,8 +19,8 @@ const DirectorEditor = () => {
     }
 
     const deleteDirector =() => {
+        //console.log("delete here")
         service.deleteDirector(director.id)
-            .then(console.log("delete here"))
             .then(() => history.goBack())
     }
     return (
@@ -102,7 +102,6 @@ const DirectorEditor = () => {
             <button onClick={updateDirector}>
                 Save
             </button>
-            <button>Create</button>
             <button onClick={() => {
                     history.goBack()
                 }}>Cancel</button>

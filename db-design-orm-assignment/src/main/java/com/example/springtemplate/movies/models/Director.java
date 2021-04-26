@@ -19,7 +19,7 @@ public class Director {
     private String email;
     private Date dateOfBirth;
 
-    @OneToMany(mappedBy = "director")
+    @OneToMany(mappedBy = "director", orphanRemoval=true)
     private List<Movie> movies;
 
     public Integer getId() {
