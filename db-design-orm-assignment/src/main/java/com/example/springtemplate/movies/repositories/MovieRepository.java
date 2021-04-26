@@ -11,4 +11,5 @@ public interface MovieRepository
     extends CrudRepository<Movie, Integer> {
     @Query(value = "SELECT * FROM movies WHERE director_id=:did", nativeQuery = true)
     public List<Movie> findAllMoviesForDirector(@Param("did") Integer id);
+
 }

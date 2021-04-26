@@ -15,10 +15,22 @@ public class MovieDao {
     @Autowired
     MovieRepository repository;
 
+    @Autowired
+    DirectorRepository Drepository;
+
 
     @PostMapping("/api/movies")
     public Movie createMovie(
             @RequestBody Movie movie) {
+        return repository.save(movie);
+    }
+
+    @PostMapping("/api/directors/{did}/movies")
+    public Movie createMovieForDirector(
+            @PathVariable("did") Integer did,
+            @RequestBody Movie movie) {
+        Director director = Drepository.findDirectorById(did);
+        movie.setDirector(director);
         return repository.save(movie);
     }
 

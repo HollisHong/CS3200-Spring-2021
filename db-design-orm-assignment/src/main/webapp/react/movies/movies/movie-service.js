@@ -16,13 +16,13 @@ const findMovieById = (mid) => {
         })
 }
 
-const findAllMoviesForDirector = (did) => {
+/*const findAllMoviesForDirector = (did) => {
     console.log("find all for d")
     return fetch(`${DIRECTOR_URL}/${did}/movies`)
         .then((response) => {
             return response.json()
         })
-    }
+    }*/
 
 
 const updateMovie = (mid, movie) =>
@@ -34,13 +34,7 @@ const updateMovie = (mid, movie) =>
         .then(response => response.json())
 
 
-const createMovieForDirector = (did,movie) =>
-    fetch(`${DIRECTOR_URL}/${did}/movies`, {
-        method: 'POST',
-        body: JSON.stringify(movie),
-        headers: {'content-type': 'application/json'}
-    })
-        .then(response => response.json())
+
 
 
 
@@ -55,7 +49,6 @@ export default {
     findAllMovies,
     findMovieById,
     updateMovie,
-    createMovieForDirector,
-    deleteMovie,
-    findAllMoviesForDirector
+    deleteMovie
+
 }

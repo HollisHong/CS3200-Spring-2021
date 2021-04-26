@@ -3,14 +3,15 @@ import Mservice from "../movies/movie-service"
 
 const {useEffect, useState} = React
 const {useParams, useHistory} = ReactRouterDOM
+const {Link} = ReactRouterDOM
 
 const DirectorEditor = () => {
     const [director, setDirector] = useState([])
     const [movies, setMovies] = useState([])
+    const [newMovie, setNewMovie] = useState([])
     const {did} = useParams()
     const history = useHistory()
     useEffect(() => {
-
 
         service.findDirectorById(did)
             .then((director) => {
@@ -18,12 +19,19 @@ const DirectorEditor = () => {
             })
     }, [])
     useEffect(() => {
-        Mservice.findAllMoviesForDirector(did)
+        service.findAllMoviesForDirector(did)
             .then((movies) => {
                 setMovies(movies)
                 // console.log(movies)
             })
     }, [])
+
+    const createMovieForDirector = (did,newMovie) =>
+        service.createMovieForDirector(did,newMovie)
+            .then(newMovie => {
+                setNewMovie({title:'',plot:'',genre:''})
+                setMovies(movies => ([...movies, newMovie]))
+            })
 
 
     const updateDirector = () => {
@@ -122,11 +130,44 @@ const DirectorEditor = () => {
 
             <div>
                 <h3> Movie List Of Director {did}</h3>
-                <ul>
+                <ul className="list-group">
+                    <li className="list-group-item">
+                        <div className="row">
+                            <div className="col">
+                                <label>Title</label>
+                                <input placeholder="title"
+                       title="Please enter movie title"
+                       className="form-control"
+                       value={newMovie.title}
+                    onChange={(e) =>
+                        setNewMovie(newMovie => ({...newMovie, title: e.target.value}))}/>
+
+                                <label>Plot</label>
+                                <input placeholder="plot"
+                       title="Please enter movie plot"
+                       className="form-control"
+                       value={newMovie.plot}
+                       onChange={(e) =>
+                           setNewMovie(newMovie => ({...newMovie, plot: e.target.value}))}/>
+
+                            <label>Genre</label>
+                                <input placeholder="genre"
+                                       title="Please enter movie genre"
+                                       className="form-control"
+                                       value={newMovie.genre}
+                                       onChange={(e) =>
+                                           setNewMovie(newMovie => ({...newMovie, genre: e.target.value}))}/>
+                            </div>
+                            <div className="col-3">
+                                <i className="fas fa-plus fa-2x float-right" onClick={() => createMovieForDirector(did,newMovie)}></i>
+                            </div>
+                        </div>
+                    </li>
                     {
                         movies.map((movie) => {
                             return (
                                 <li className="list-group-item">
+
                                     <Link to={`/movies/${movie.id}`}>
                                         {movie.title}
                                     </Link>
@@ -135,7 +176,7 @@ const DirectorEditor = () => {
                         })
                     }
                 </ul>
-                <button>Add Movie</button>
+
             </div>
         </div>
 

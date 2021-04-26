@@ -40,11 +40,32 @@ const deleteDirector = (did) =>
     })
 
 
+const findAllMoviesForDirector = (did) => {
+    console.log("find all for d")
+    return fetch(`${DIRECTOR_URL}/${did}/movies`)
+        .then((response) => {
+            return response.json()
+        })
+    
+
+}
+
+const createMovieForDirector = (did,movie) =>
+    fetch(`${DIRECTOR_URL}/${did}/movies`, {
+        method: 'POST',
+        body: JSON.stringify(movie),
+        headers: {'content-type': 'application/json'}
+    })
+        .then(response => response.json())
+
+
 
 export default {
     findAllDirectors,
     findDirectorById,
     updateDirector,
     createDirector,
-    deleteDirector
+    deleteDirector,
+    createMovieForDirector,
+    findAllMoviesForDirector
 }
