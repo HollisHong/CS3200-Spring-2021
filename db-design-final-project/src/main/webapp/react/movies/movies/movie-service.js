@@ -1,5 +1,4 @@
 const MOVIE_URL = 'http://localhost:8080/api/movies'
-const DIRECTOR_URL = 'http://localhost:8080/api/directors'
 
 const findAllMovies = () => {
     return fetch(MOVIE_URL)
@@ -15,14 +14,6 @@ const findMovieById = (mid) => {
             return response.json()
         })
 }
-
-/*const findAllMoviesForDirector = (did) => {
-    console.log("find all for d")
-    return fetch(`${DIRECTOR_URL}/${did}/movies`)
-        .then((response) => {
-            return response.json()
-        })
-    }*/
 
 
 const updateMovie = (mid, movie) =>

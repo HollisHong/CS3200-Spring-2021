@@ -9,7 +9,6 @@ const MovieList = () => {
         service.findAllMovies()
             .then((movies) => {
                 setMovies(movies)
-                // console.log(movies)
             })
     }, [])
 
@@ -32,7 +31,6 @@ const MovieList = () => {
                     })
                 }
             </ul>
-            {JSON.stringify(movies)}
         </div>
     )
 }

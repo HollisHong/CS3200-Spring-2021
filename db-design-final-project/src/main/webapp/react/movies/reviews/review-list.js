@@ -28,7 +28,7 @@ const ReviewList = () => {
                     })
                 }
             </ul>
-            {JSON.stringify(reviews)}
+
         </div>
     )
 }

@@ -14,7 +14,6 @@ const MovieEditor = () => {
         service.findMovieById(mid)
             .then((movie) => {
                 setMovie(movie)
-                //console.log(movie)
             })
     }, [])
     useEffect(() => {
@@ -78,7 +77,6 @@ const MovieEditor = () => {
             </button>
             <button>Create</button>
             <button onClick={history.back}>Cancel</button>
-            {JSON.stringify(movie)}
 
             <div>
                 <h3> Review List Of Movie {mid}</h3>

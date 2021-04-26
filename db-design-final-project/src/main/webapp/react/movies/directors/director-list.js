@@ -10,7 +10,6 @@ const DirectorList = () => {
         service.findAllDirectors()
             .then((directors) => {
                 setDirectors(directors)
-                 //console.log(directors)
             })
     }, [])
 
@@ -61,7 +60,6 @@ const DirectorList = () => {
                             <input placeholder="2000-01-01"
                                    title="Please enter your dateOfBirth" className="form-control" value={newDirector.dateOfBirth}
                                    onChange={(e) => setNewDirector(newDirector => ({...newDirector, dateOfBirth: e.target.value}))}/>
-                            {JSON.stringify(newDirector)}
                         </div>
                         <div className="col-3">
                             <i className="fas fa-plus fa-2x float-right" onClick={() => createDirector(newDirector)}></i>
@@ -80,26 +78,8 @@ const DirectorList = () => {
                     })
                 }
             </ul>
-            {JSON.stringify(directors)}
-        </div>
-      /*  <div>
-            <h2>Director List</h2>
-            <ul className="list-group">
-                {
-                    directors.map((director) => {
-                        return (
-                            <li className="list-group-item">
-                                <Link to={`/directors/${director.id}`}>
-                                    {director.username}
-                                </Link>
-                            </li>
-                        )
-                    })
-                }
-            </ul>
-            {JSON.stringify(directors)}
-        </div>*/
-    )
+        </div>)
+
 }
 
 export default DirectorList

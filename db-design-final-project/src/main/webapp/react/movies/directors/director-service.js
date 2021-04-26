@@ -34,9 +34,7 @@ const createDirector = (director) =>
 
 const deleteDirector = (did) =>
     fetch(`${DIRECTOR_URL}/${did}`, {
-        method: 'DELETE',
-        //body: JSON.stringify(director),
-        //headers: {'content-type': 'application/json'}
+        method: 'DELETE'
     })
 
 

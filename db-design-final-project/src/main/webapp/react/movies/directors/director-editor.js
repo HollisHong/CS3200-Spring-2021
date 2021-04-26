@@ -22,7 +22,6 @@ const DirectorEditor = () => {
         service.findAllMoviesForDirector(did)
             .then((movies) => {
                 setMovies(movies)
-                // console.log(movies)
             })
     }, [])
 
@@ -40,7 +39,6 @@ const DirectorEditor = () => {
     }
 
     const deleteDirector =() => {
-        //console.log("delete here")
         service.deleteDirector(director.id)
             .then(() => history.goBack())
     }
@@ -126,7 +124,6 @@ const DirectorEditor = () => {
             <button onClick={() => {
                     history.goBack()
                 }}>Cancel</button>
-            {JSON.stringify(director)}
 
             <div>
                 <h3> Movie List Of Director {did}</h3>

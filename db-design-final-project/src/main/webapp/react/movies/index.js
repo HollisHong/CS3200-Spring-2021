@@ -5,9 +5,7 @@ import MovieList from "./movies/movie-list";
 import MovieEditor from "./movies/movie-editor";
 import ReviewList from "./reviews/review-list";
 import ReviewEditor from "./reviews/review-editor";
-import ReviewerList from "./reviewers/reviewer-list";
-import ReviewerEditor from "./reviewers/reviewer-editor";
-import ReviewerCreater from "./reviewers/reviewer-creater";
+
 
 const {HashRouter, Link, Route} = window.ReactRouterDOM;
  

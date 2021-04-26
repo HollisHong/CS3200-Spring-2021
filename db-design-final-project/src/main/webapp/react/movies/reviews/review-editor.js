@@ -11,7 +11,6 @@ const ReviewEditor = () => {
         service.findReviewById(rid)
             .then((review) => {
                 setReview(review)
-                //console.log(review)
             })
     }, [])
     const updateReview = () => {
@@ -63,7 +62,6 @@ const ReviewEditor = () => {
             <button onClick={() => {
                 history.goBack()
             }}>Cancel</button>
-            {JSON.stringify(review)}
         </div>
     )
 }
