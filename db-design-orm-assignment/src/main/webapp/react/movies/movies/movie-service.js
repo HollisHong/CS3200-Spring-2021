@@ -1,4 +1,5 @@
 const MOVIE_URL = 'http://localhost:8080/api/movies'
+const DIRECTOR_URL = 'http://localhost:8080/api/directors'
 
 const findAllMovies = () => {
     return fetch(MOVIE_URL)
@@ -7,12 +8,22 @@ const findAllMovies = () => {
         })
 }
 
+
 const findMovieById = (mid) => {
     return fetch(`${MOVIE_URL}/${mid}`)
         .then((response) => {
             return response.json()
         })
 }
+
+const findAllMoviesForDirector = (did) => {
+    console.log("find all for d")
+    return fetch(`${DIRECTOR_URL}/${did}/movies`)
+        .then((response) => {
+            return response.json()
+        })
+    }
+
 
 const updateMovie = (mid, movie) =>
     fetch(`${MOVIE_URL}/${mid}`, {
@@ -23,8 +34,8 @@ const updateMovie = (mid, movie) =>
         .then(response => response.json())
 
 
-const createMovie = (did,movie) =>
-    fetch(`${MOVIE_URL}`, {
+const createMovieForDirector = (did,movie) =>
+    fetch(`${DIRECTOR_URL}/${did}/movies`, {
         method: 'POST',
         body: JSON.stringify(movie),
         headers: {'content-type': 'application/json'}
@@ -44,6 +55,7 @@ export default {
     findAllMovies,
     findMovieById,
     updateMovie,
-    createMovie,
-    deleteMovie
+    createMovieForDirector,
+    deleteMovie,
+    findAllMoviesForDirector
 }

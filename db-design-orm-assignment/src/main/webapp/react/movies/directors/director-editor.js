@@ -1,18 +1,31 @@
 import service from "./director-service"
+import Mservice from "../movies/movie-service"
 
 const {useEffect, useState} = React
 const {useParams, useHistory} = ReactRouterDOM
 
 const DirectorEditor = () => {
     const [director, setDirector] = useState([])
+    const [movies, setMovies] = useState([])
     const {did} = useParams()
     const history = useHistory()
     useEffect(() => {
+
+
         service.findDirectorById(did)
             .then((director) => {
                 setDirector(director)
             })
     }, [])
+    useEffect(() => {
+        Mservice.findAllMoviesForDirector(did)
+            .then((movies) => {
+                setMovies(movies)
+                // console.log(movies)
+            })
+    }, [])
+
+
     const updateDirector = () => {
         service.updateDirector(director.id, director)
             .then(() => history.goBack())
@@ -106,7 +119,26 @@ const DirectorEditor = () => {
                     history.goBack()
                 }}>Cancel</button>
             {JSON.stringify(director)}
+
+            <div>
+                <h3> Movie List Of Director {did}</h3>
+                <ul>
+                    {
+                        movies.map((movie) => {
+                            return (
+                                <li className="list-group-item">
+                                    <Link to={`/movies/${movie.id}`}>
+                                        {movie.title}
+                                    </Link>
+                                </li>
+                            )
+                        })
+                    }
+                </ul>
+                <button>Add Movie</button>
+            </div>
         </div>
+
     )
 }
 

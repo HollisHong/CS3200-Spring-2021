@@ -14,13 +14,11 @@ import java.util.List;
 public class MovieDao {
     @Autowired
     MovieRepository repository;
-    DirectorRepository Drepository;
+
 
     @PostMapping("/api/movies")
     public Movie createMovie(
-            @RequestBody Integer id,
             @RequestBody Movie movie) {
-        movie.setDirector(Drepository.findById(id));
         return repository.save(movie);
     }
 
@@ -50,5 +48,12 @@ public class MovieDao {
     public void deleteMovie(
             @PathVariable("mid") Integer id) {
         repository.deleteById(id);
+    }
+
+    @GetMapping("/api/directors/{did}/movies")
+    public List<Movie> findAllMoviesForDirector(
+            @PathVariable("did") Integer did) {
+        return repository.findAllMoviesForDirector(did);
+
     }
 }
