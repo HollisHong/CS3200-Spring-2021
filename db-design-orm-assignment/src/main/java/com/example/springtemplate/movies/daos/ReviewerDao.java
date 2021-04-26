@@ -14,10 +14,12 @@ public class ReviewerDao {
     @Autowired
     ReviewerRepository repository;
 
+
     @PostMapping("/api/reviewers/new")
     public Reviewer createReviewer(@RequestBody Reviewer reviewer) {
         return repository.save(reviewer);
     }
+
 
     @GetMapping("/api/reviewers")
     public List<Reviewer> findAllReviewers() {
@@ -47,8 +49,10 @@ public class ReviewerDao {
     }
 
 
-
-    public Integer deleteReviewer(Integer id) {
-        return null;
+    @DeleteMapping("/api/reviewers/{rerid}")
+    public void deleteReviewer(
+            @PathVariable("rerid") Integer id) {
+        repository.deleteById(id);
     }
+
 }

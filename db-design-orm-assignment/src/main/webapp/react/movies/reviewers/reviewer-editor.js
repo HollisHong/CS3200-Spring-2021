@@ -6,7 +6,6 @@ const {useParams} = ReactRouterDOM
 const ReviewerEditor = () => {
     const [reviewer, setReviewer] = useState([])
     const {rerid} = useParams()
-    
     useEffect(() => {
         service.findReviewerById(rerid)
             .then((reviewer) => {
@@ -14,14 +13,27 @@ const ReviewerEditor = () => {
                 //console.log(reviewer)
             })
     }, [])
+
     const updateReviewer = () => {
         service.updateReviewer(reviewer.id, reviewer)
     }
+
+
+
     return (
         <div>
             <h2>Reviewer Editor {rerid}</h2>
             <label>ID</label>
             <input value={reviewer.id} className="form-control"/>
+
+            <label>Username</label>
+            <input
+                onChange={(e) => {
+                    const newValue = e.target.value
+                    setReviewer({...reviewer, username: newValue})
+                }}
+                value={reviewer.username} className="form-control"/>
+
 
             <label>FirstName</label>
             <input

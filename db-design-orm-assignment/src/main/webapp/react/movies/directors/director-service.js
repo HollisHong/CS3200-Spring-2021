@@ -22,9 +22,27 @@ const updateDirector = (did, director) =>
     })
         .then(response => response.json())
 
+const createDirector = (director) =>
+    fetch(`${DIRECTOR_URL}`, {
+        method: 'POST',
+        body: JSON.stringify(director),
+        headers: {'content-type': 'application/json'}
+    })
+        .then(response => response.json())
+
+
+
+const deleteDirector = (did) =>
+    fetch(`${DIRECTOR_URL}/${mid}`, {
+        method: "DELETE"
+    })
+
+
 
 export default {
     findAllDirectors,
     findDirectorById,
-    updateDirector
+    updateDirector,
+    createDirector,
+    deleteDirector
 }

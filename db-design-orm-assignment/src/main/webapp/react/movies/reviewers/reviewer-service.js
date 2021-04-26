@@ -22,8 +22,9 @@ const updateReviewer = (rerid, reviewer) =>
     })
         .then(response => response.json())
 
+
 const createReviewer = (reviewer) =>
-    fetch(`${REVIEWER_URL}/new`, {
+    fetch(`${REVIEWER_URL}`, {
         method: 'POST',
         body: JSON.stringify(reviewer),
         headers: {'content-type': 'application/json'}
@@ -32,9 +33,17 @@ const createReviewer = (reviewer) =>
 
 
 
+const deleteReviewer = (rerid) =>
+    fetch(`${REVIEWER_URL}/${rerid}`, {
+        method: "DELETE"
+    })
+
+
+
 export default {
     findAllReviewers,
     findReviewerById,
     updateReviewer,
-    createReviewer
+    createReviewer,
+    deleteReviewer
 }

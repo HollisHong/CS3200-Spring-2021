@@ -22,10 +22,27 @@ const updateReview = (rid, review) =>
     })
         .then(response => response.json())
 
+const createReview = (review) =>
+    fetch(`${REVIEW_URL}`, {
+        method: 'POST',
+        body: JSON.stringify(review),
+        headers: {'content-type': 'application/json'}
+    })
+        .then(response => response.json())
+
+
+
+const deleteReview = (rid) =>
+    fetch(`${REVIEW_URL}/${rid}`, {
+        method: "DELETE"
+    })
+
 
 
 export default {
     findAllReviews,
     findReviewById,
-    updateReview
+    updateReview,
+    createReview,
+    deleteReview
 }

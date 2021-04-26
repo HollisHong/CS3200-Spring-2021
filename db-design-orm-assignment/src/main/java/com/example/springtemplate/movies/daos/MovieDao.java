@@ -14,8 +14,9 @@ public class MovieDao {
     @Autowired
     MovieRepository repository;
 
-    public Movie createMovie(Movie movie) {
-        return null;
+    @PostMapping("/api/movies")
+    public Movie createUser(@RequestBody Movie movie) {
+        return repository.save(movie);
     }
 
     @GetMapping("/api/movies")
@@ -40,7 +41,9 @@ public class MovieDao {
         return repository.save(movie);
     }
 
-    public Integer deleteMovie(Integer id) {
-        return null;
+    @DeleteMapping("/api/movies/{mid}")
+    public void deleteUser(
+            @PathVariable("mid") Integer id) {
+        repository.deleteById(id);
     }
 }

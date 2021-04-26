@@ -23,9 +23,27 @@ const updateMovie = (mid, movie) =>
         .then(response => response.json())
 
 
+const createMovie = (movie) =>
+    fetch(`${MOVIE_URL}`, {
+        method: 'POST',
+        body: JSON.stringify(movie),
+        headers: {'content-type': 'application/json'}
+    })
+        .then(response => response.json())
+
+
+
+const deleteMovie = (mid) =>
+    fetch(`${MOVIE_URL}/${mid}`, {
+        method: "DELETE"
+    })
+
+
 
 export default {
     findAllMovies,
     findMovieById,
-    updateMovie
+    updateMovie,
+    createMovie,
+    deleteMovie
 }

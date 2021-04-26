@@ -14,8 +14,9 @@ public class ReviewDao {
     @Autowired
     ReviewRepository repository;
 
-    public Review createReview(Review review) {
-        return null;
+    @PostMapping("/api/reviews")
+    public Review createReview(@RequestBody Review review) {
+        return repository.save(review);
     }
 
     @GetMapping("/api/reviews")
@@ -40,7 +41,9 @@ public class ReviewDao {
         return repository.save(review);
     }
 
-    public Integer deleteReview(Integer id) {
-        return null;
+    @DeleteMapping("/api/reviews/{rid}")
+    public void deleteUser(
+            @PathVariable("rid") Integer id) {
+        repository.deleteById(id);
     }
 }

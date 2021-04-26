@@ -14,8 +14,9 @@ public class DirectorDao {
     @Autowired
     DirectorRepository repository;
 
-    public Director createDirector(Director director) {
-        return null;
+    @PostMapping("/api/directors")
+    public Director createDirecctor(@RequestBody Director director) {
+        return repository.save(director);
     }
 
     @GetMapping("/api/directors")

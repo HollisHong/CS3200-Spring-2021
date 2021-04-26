@@ -1,5 +1,4 @@
 import service from "./reviewer-service"
-import ReviewerEditor from "./reviewer-editor";
 
 
 const {useEffect, useState} = React
@@ -18,12 +17,6 @@ const ReviewerList = () => {
 
         <div>
             <h2>Reviewer List</h2>
-            <li>
-                <Link to={`/reviewers/new`}>
-                    {"New"}
-                </Link>
-            </li>
-
             <ul className="list-group">
                 {
                     reviewers.map((reviewer) => {
