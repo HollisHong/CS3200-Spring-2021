@@ -1,3 +1,29 @@
+## CS3200 - Spring 2021 - P3 - Group 36
+
+##### Problem statement:
+
+ Our project is designed as a movie review system only for directors.  Current movie review System is always comprehensive and therefore, sometimes movie directors do not have a direct way to hear the comments from the audience.
+
+##### Solution statement:
+ 
+ Directors can register an account and upload their works and everyone can leave their reviews and ratings anonymously. Since the movie information is focused on the movie plots, genre and director. People who wants to share their ideas of movies plots, directing, casting and so on can directly communicate with the director.
+
+##### User:
+
+ Typical users will be directors, especially new directors who wants to get audience’s opinions or share their movies with others. Every one who is interested in movies or has ideas on how to improve this movies can be a reviewer here. Since all reviews will be anonymous, reviewers doesn’t need any registration.
+
+
+##### Domain objects:
+ 
+ Movies — movies information contains the title, genre and plot. Information about casting, posters, box office performance, cost will not be listed so that the audience can focus more on the movie itself while writing reviews.  Movies and Directors are ManyToOne relationship so that a movie cannot exist in our database without a director. Movies and Reviews are OneToMany relationship so there is a list of review posts under each movie in the user interface.
+
+ Reviews — reviews contains information of rating and posts. Therefore, users can clearly see the content and the attitude of one review. Reviews and Movies are ManyToOne relationship so that one review cannot be created without a movie it is commenting on. Everyone can create the new review under the movie in the user interface.
+
+#### Team
+Jiahao Hong & Yan Chen form section 4
+
+
+
 ## CS3200 - Spring 2021 - P1 - Group 36
 #### Name of the project
 Fresh Tomato

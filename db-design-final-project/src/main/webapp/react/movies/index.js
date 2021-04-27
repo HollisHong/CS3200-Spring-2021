@@ -21,6 +21,7 @@ const App = () => {
                     <DirectorEditor/>
                 </Route>
 
+                <br/>
                 <Route path={["/movies", "/"]} exact={true}>
                     <MovieList/>
                 </Route>
@@ -28,12 +29,14 @@ const App = () => {
                     <MovieEditor/>
                 </Route>
 
+                <br/>
                 <Route path={["/reviews", "/"]} exact={true}>
                     <ReviewList/>
                 </Route>
                 <Route path="/reviews/:rid" exact={true}>
                     <ReviewEditor/>
                 </Route>
+                <br/>
 
 
             </HashRouter>

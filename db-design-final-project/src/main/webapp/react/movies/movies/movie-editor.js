@@ -63,7 +63,7 @@ const MovieEditor = () => {
                     }}
                     value={movie.plot} className="form-control"/>
 
-                <label>Genre</label>
+                <label>Genre (One of SCIFI, LOVE, HORROR, and COMEDY</label>
                 <input
                     onChange={(e) => {
                         const newValue = e.target.value
