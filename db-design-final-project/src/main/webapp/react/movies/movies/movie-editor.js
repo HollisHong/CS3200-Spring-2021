@@ -43,41 +43,50 @@ const MovieEditor = () => {
 
     return (
         <div>
-            <h2>Movie Editor {mid}</h2>
-            <label>ID</label>
-            <input value={movie.id} className="form-control"/>
-            <label>Title</label>
-            <input
-                onChange={(e) => {
-                    const newValue = e.target.value
-                    setMovie({...movie, title: newValue})
-                }}
-                value={movie.title} className="form-control"/>
+            <div>
+                <h2>Movie Editor {mid}</h2>
+                <label>ID</label>
+                <input value={movie.id} className="form-control"/>
+                <label>Title</label>
+                <input
+                    onChange={(e) => {
+                        const newValue = e.target.value
+                        setMovie({...movie, title: newValue})
+                    }}
+                    value={movie.title} className="form-control"/>
 
-            <label>Plot</label>
-            <input
-                onChange={(e) => {
-                    const newValue = e.target.value
-                    setMovie({...movie, plot: newValue})
-                }}
-                value={movie.plot} className="form-control"/>
+                <label>Plot</label>
+                <input
+                    onChange={(e) => {
+                        const newValue = e.target.value
+                        setMovie({...movie, plot: newValue})
+                    }}
+                    value={movie.plot} className="form-control"/>
 
-            <label>Genre</label>
-            <input
-                onChange={(e) => {
-                    const newValue = e.target.value
-                    setMovie({...movie, genre: newValue})
-                }}
-                value={movie.genre} className="form-control"/>
+                <label>Genre</label>
+                <input
+                    onChange={(e) => {
+                        const newValue = e.target.value
+                        setMovie({...movie, genre: newValue})
+                    }}
+                    value={movie.genre} className="form-control"/>
+
+                <label>Director</label>
+                    <Link to={`/directors/${movie.directorId}`}
+                          className="form-control">
+                        {movie.directorName}
+                    </Link>
 
 
-            <button onClick={deleteMovie}>Delete</button>
-            <button onClick={updateMovie}>
-                Save
-            </button>
-            <button>Create</button>
-            <button onClick={history.back}>Cancel</button>
-
+                <button onClick={deleteMovie}>Delete</button>
+                <button onClick={updateMovie}>
+                    Save
+                </button>
+                <button onClick={() => {
+                    history.goBack()
+                }}>Cancel</button>
+            </div>
+            <br/>
             <div>
                 <h3> Review List Of Movie {mid}</h3>
                 <ul className="list-group">
@@ -112,7 +121,7 @@ const MovieEditor = () => {
                             return (
                                 <li className="list-group-item">
                                     <Link to={`/reviews/${review.id}`}>
-                                        {review.id}
+                                        {review.post}
                                     </Link>
                                 </li>
                             )

@@ -2,6 +2,7 @@ import service from "./review-service"
 
 const {useEffect, useState} = React
 const {useParams, useHistory} = ReactRouterDOM
+const {Link} = ReactRouterDOM
 
 const ReviewEditor = () => {
     const [review, setReview] = useState([])
@@ -44,14 +45,12 @@ const ReviewEditor = () => {
                 }}
                 value={review.rating} className="form-control"/>
 
-            <label>Movie</label>
-            <input
-                onChange={(e) => {
-                    const newValue = e.target.value
-                    setMovie({...review, movie: newValue})
-                }}
-                value={review.movie} className="form-control"/>
 
+            <label>Movie</label>
+            <Link to={`/movies/${review.movieId}`}
+                  className="form-control">
+                {review.movieName}
+            </Link>
 
 
             <button onClick={deleteReview}>Delete</button>

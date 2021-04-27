@@ -18,6 +18,16 @@ public class Review {
     @JsonIgnore
     private Movie movie;
 
+    @Transient
+    public Integer getMovieId() {
+        return movie.getId();
+    }
+
+    @Transient
+    public String getMovieName() {
+        return movie.getTitle();
+    }
+
     public Integer getId() {
         return id;
     }

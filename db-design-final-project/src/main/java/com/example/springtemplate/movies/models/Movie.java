@@ -23,6 +23,16 @@ public class Movie {
     @OneToMany(mappedBy = "movie", orphanRemoval=true)
     private List<Review> reviews;
 
+    @Transient
+    public Integer getDirectorId() {
+        return director.getId();
+    }
+
+    @Transient
+    public String getDirectorName() {
+        return director.getUsername();
+    }
+
     public Integer getId() {
         return id;
     }
