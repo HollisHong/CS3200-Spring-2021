@@ -61,7 +61,7 @@ const DirectorList = () => {
                                    title="Please enter your email" className="form-control" value={newDirector.email}
                                    onChange={(e) => setNewDirector(newDirector => ({...newDirector, email: e.target.value}))}/>
 
-                            <label>Password</label>
+                            <label>Age</label>
                             <input placeholder="0"
                                    title="Please enter your age" className="form-control" value={newDirector.age}
                                    onChange={(e) => setNewDirector(newDirector => ({...newDirector, age: e.target.value}))}/>
